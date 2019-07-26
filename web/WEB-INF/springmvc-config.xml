@@ -15,31 +15,24 @@ http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    <!--<context:component-scan base-package="com.neuedu.controller" />
+    <context:component-scan base-package="com.neuedu.dao" />
+    <context:component-scan base-package="com.neuedu.validator" />-->
     <context:component-scan base-package="cn.edu.scau.neusoft.controller"/>
-<!--    <context:component-scan base-package="cn.edu.scau.neusoft.dao"/>-->
+    <context:component-scan base-package="cn.edu.scau.neusoft.dao"/>
     <context:component-scan base-package="cn.edu.scau.neusoft.validator"/>
-    <context:component-scan base-package="cn.edu.scau.neusoft.service"/>
 
-    <mvc:annotation-driven conversion-service="conversionService"/>
     <bean id="conversionService"
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="formatters">
             <set>
                 <!--注册自定义转换器-->
-                <bean class="cn.edu.scau.neusoft.converter.DateFormatter"/>
-            </set>
-        </property>
-        <property name="converters">
-            <set>
-                <bean class="cn.edu.scau.neusoft.converter.DateConverter"/>
             </set>
         </property>
     </bean>
 
 
-    <mvc:resources mapping="/js/**" location="WEB-INF/js/"></mvc:resources>
-    <mvc:default-servlet-handler></mvc:default-servlet-handler>
-<!--    <mvc:annotation-driven conversion-service="conversionService" />-->
+    <mvc:annotation-driven conversion-service="conversionService" />
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:errorMessages" />
@@ -51,28 +44,15 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-<!--    配置拦截器-->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**" />
-            <bean class="cn.edu.scau.neusoft.interceptor.UserLoginInterceptor" />
-        </mvc:interceptor>
-    </mvc:interceptors>
-
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="error" />
         <property name="exceptionAttribute" value="er" />
         <property name="exceptionMappings" >
             <props>
-                <prop key="cn.edu.scau.neusoft.exception.MyException">my-error</prop>
+                <prop key="com.neuedu.exception.MyException">my-error</prop>
                 <prop key="java.sql.SQLException">sql-error</prop>
             </props>
         </property>
-    </bean>
-
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 </beans>
 
