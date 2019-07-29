@@ -76,4 +76,16 @@ public class UserController {
         session.invalidate();
         return "redirect:login";
     }
+
+    @RequestMapping("/toadduser")
+    public String toadduser() {
+        return "toadduser";
+    }
+
+    @RequestMapping(value = "/adduser",method = RequestMethod.POST)
+    public String adduser(HttpSession session) {
+        User user;
+//        user.setUserID(session.getAttribute());
+        return "success";
+    }
 }
