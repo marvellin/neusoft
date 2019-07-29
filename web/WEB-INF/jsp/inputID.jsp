@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
+    <script type="text/javascript">
+        alert(${msg});
+    </script>
         <h1>输入客户ID</h1>
         <%--<table width="80%" border="1" action="${pageContext.}">
             <tr>

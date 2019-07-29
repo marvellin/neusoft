@@ -15,6 +15,7 @@ public class UserController {
 
     @RequestMapping("/torestful")
     public String torestful() {
+        System.out.println("torestful test");
         return "restful";
     }
 

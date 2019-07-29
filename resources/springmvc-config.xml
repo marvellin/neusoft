@@ -16,11 +16,8 @@ http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <context:component-scan base-package="cn.edu.scau.neusoft.controller"/>
-<!--    <context:component-scan base-package="cn.edu.scau.neusoft.dao"/>-->
     <context:component-scan base-package="cn.edu.scau.neusoft.validator"/>
     <context:component-scan base-package="cn.edu.scau.neusoft.service"/>
-
-    <mvc:annotation-driven conversion-service="conversionService"/>
     <bean id="conversionService"
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="formatters">
@@ -35,7 +32,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
             </set>
         </property>
     </bean>
-
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <mvc:resources mapping="/js/**" location="WEB-INF/js/"></mvc:resources>
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
@@ -55,9 +52,13 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 <!--    配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**" />
+            <mvc:mapping path="/main" />
             <bean class="cn.edu.scau.neusoft.interceptor.UserLoginInterceptor" />
         </mvc:interceptor>
+       <!-- <mvc:interceptor>
+            <mvc:mapping path="/findCustomers"/>
+            <bean class=""></bean>
+        </mvc:interceptor>-->
     </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

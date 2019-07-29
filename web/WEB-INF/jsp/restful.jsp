@@ -3,11 +3,7 @@
 <html>
   <head>
     <title>ajax</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" charset="UTF-8"/>
-    <script type="text/javascript">
-      alert($)
-      alert("balabala")
-    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" charset="UTF-8"></script>
   </head>
   <body>
   <script type="text/javascript">
@@ -33,7 +29,7 @@
     <form>
       编号：<input type="text" name="userID" id="userID"/>
       <input type="button" value="搜索" onclick="search()"/>
-      <input type="button" value="clickTest" onclick="alter('test')"/>
+<%--      <input type="button" value="clickTest" onclick=""/>--%>
     </form>
   </body>
 </html>
