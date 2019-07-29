@@ -25,13 +25,15 @@ public class CustomerController {
             return "customer";
         }
         else {
-            model.addAttribute("msg","未输入客户ID！");
-            return "redirect:tofindCustomer";
+            session.setAttribute("msg","未输入客户ID！");
+            return "inputID";
         }
     }
 
     @RequestMapping("/tofindCustomer")
-    public String toinputID(){
+    public String toinputID(HttpSession session) {
+        session.removeAttribute("msg");
+        session.setAttribute("msg","");
         return "inputID";
     }
 }

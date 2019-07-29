@@ -14,8 +14,8 @@
     function check() {
       var name = document.getElementById("name").value;
       var file = document.getElementById("file").value;
-      alert(name);
-      alert(file);
+      // alert(name);
+      // alert(file);
       if (name=="") {
         alert("请填写上传人！");
         return false;
